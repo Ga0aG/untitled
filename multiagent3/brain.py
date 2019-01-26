@@ -35,10 +35,10 @@ class QLearningTable:
             action = np.random.choice(self.actions)
         return action
     
-    def learn(self, s, a, r, s_,goal):
+    def learn(self, s, a, r, s_, done):
         self.check_state_exist(s_)  
         q_predict = self.q_table.loc[s, a] 
-        if sorted(eval(s_)) == goal:
+        if done:
             q_target = r 
         else:
             q_target = r + self.gamma * self.q_table.loc[s_, :].max() 
