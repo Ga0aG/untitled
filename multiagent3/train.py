@@ -19,7 +19,7 @@ def update(num):
             observation_, reward, done = env.step(action)
             sum_reward += reward
             step += 1
-            RL.learn(str(observation), action, reward, str(observation_),sorted(env.goal))
+            RL.learn(str(observation), action, reward, str(observation_),done)
             observation = observation_
             if done:
                 REWARD.append(sum_reward)
